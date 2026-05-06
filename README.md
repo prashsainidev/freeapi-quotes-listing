@@ -11,7 +11,7 @@ That was fine for a beginner. But in 2026, building a generic UI isn't enough. Y
 
 Here is exactly how I leveled up from a simple fetcher to an industry-standard layout. Step by step.
 
----
+***
 
 ## The API Integration Breakdown
 
@@ -19,41 +19,41 @@ To build a real pagination system, you have to understand exactly how the API se
 
 ### Step 1: The Dynamic Fetch
 If you just fetch the base URL, you get whatever the server decides to give you. I needed exact control.
-- **The URL:** `https://api.freeapi.app/api/v1/public/quotes?page=${currentPage}&limit=10`
-- **Why it matters:** By injecting the `currentPage` state directly into the URL, the API specifically returns only the 10 quotes for that exact page number.
+* **The URL:** `https://api.freeapi.app/api/v1/public/quotes?page=${currentPage}&limit=10`
+* **Why it matters:** By injecting the `currentPage` state directly into the URL, the API specifically returns only the 10 quotes for that exact page number.
 
 ### Step 2: Demystifying the JSON Data
 Real-world APIs wrap their data in heavy metadata. When I logged the response, I found two critical pieces of data:
-- **`data.data.data`**: This is the actual Array containing the 10 quote objects.
-- **`data.data`**: This is the Meta object. It contains critical pagination math like `totalPages`, `totalItems`, and `currentPageItems`.
+* **`data.data.data`**: This is the actual Array containing the 10 quote objects.
+* **`data.data`**: This is the Meta object. It contains critical pagination math like `totalPages`, `totalItems`, and `currentPageItems`.
 
 ### Step 3: Dual State Management
 I needed two separate React states to handle this complex response securely.
-- **The Quotes:** `setQuotes(data.data.data)` feeds the masonry grid.
-- **The Meta:** `setMeta(data.data)` feeds the dynamic Stats Bar and the Pagination component, letting them know exactly how many pages exist.
+* **The Quotes:** `setQuotes(data.data.data)` feeds the masonry grid.
+* **The Meta:** `setMeta(data.data)` feeds the dynamic Stats Bar and the Pagination component, letting them know exactly how many pages exist.
 
----
+***
 
 ## The Next Level of React Architecture
 
 In **Part 4 (Jokes Viewer)**, I successfully built complex pagination logic. But what good is code if you have to rewrite it every time? In this project, I proved that good architecture is **reusable**.
 
 ### 1. Reusable Component Architecture
-- **Problem:** Writing complex pagination logic inside `App.jsx` bloats the main file and makes the code hard to maintain.
-- **Solution:** I reused the isolated `Pagination.jsx` component built in the previous Jokes API project. 
-- **Result:** `App.jsx` stays incredibly clean, handling only state and the API flow, while the complex math for moving pagination windows is handled exactly where it belongs.
+* **Problem:** Writing complex pagination logic inside `App.jsx` bloats the main file and makes the code hard to maintain.
+* **Solution:** I reused the isolated `Pagination.jsx` component built in the previous Jokes API project. 
+* **Result:** `App.jsx` stays incredibly clean, handling only state and the API flow, while the complex math for moving pagination windows is handled exactly where it belongs.
 
----
+***
 
 ## The Real Secret: CSS Engineering
 
 I wanted this to look like a high-end luxury editorial magazine, moving far away from the basic "dashboard" look. Here is what makes this UI stand out:
 
-- **The Gold Watermark Quotes:** Instead of basic text quotes, I engineered massive, zoomed-in Playfair Display quotation marks (`“` and `”`). Using `z-index: -1`, `opacity: 0.15`, and precise pseudo-elements on both sides of the text, they act as massive, elegant watermarks sitting *perfectly behind* the quotes without ever overlapping the actual words.
-- **The Fluid Masonry Grid:** Implemented CSS `column-count: 2` to create a newspaper-style masonry layout that flows perfectly. On mobile devices, it seamlessly collapses into a single column.
-- **Premium Dark Mode:** Built a rich `#121212` dark theme with a subtle radial-gradient dot matrix background. The cards feature a sophisticated gold top-border (`#d4af37`), bringing a luxurious warmth to the entire application.
+* **The Gold Watermark Quotes:** Instead of basic text quotes, I engineered massive, zoomed-in Playfair Display quotation marks (`“` and `”`). Using `z-index: -1`, `opacity: 0.15`, and precise pseudo-elements on both sides of the text, they act as massive, elegant watermarks sitting *perfectly behind* the quotes without ever overlapping the actual words.
+* **The Fluid Masonry Grid:** Implemented CSS `column-count: 2` to create a newspaper-style masonry layout that flows perfectly. On mobile devices, it seamlessly collapses into a single column.
+* **Premium Dark Mode:** Built a rich `#121212` dark theme with a subtle radial-gradient dot matrix background. The cards feature a sophisticated gold top-border (`#d4af37`), bringing a luxurious warmth to the entire application.
 
----
+***
 
 ## Try it yourself
 

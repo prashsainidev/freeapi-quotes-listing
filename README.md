@@ -7,7 +7,7 @@
 
 That was fine for a beginner. But in 2026, building a generic UI isn't enough. You need to build something that feels like an enterprise-level, luxury editorial magazine. Something that handles bulk data dynamically, navigates seamlessly, and looks visually stunning.
 
-This is the Editorial Quotes Gallery. Built for the MasterJi Web Dev Cohort 2026, using the FreeAPI Quotes endpoint.
+**Welcome to Part 5 of my FreeAPI Mastery Series.** This is the Editorial Quotes Gallery, built using the FreeAPI Quotes endpoint.
 
 Here is exactly how I leveled up from a simple fetcher to an industry-standard layout. Step by step.
 
@@ -36,7 +36,7 @@ I needed two separate React states to handle this complex response securely.
 
 ## The Next Level of React Architecture
 
-In my previous projects, I mastered basic fetching and filtering. In this project, I proved that good architecture is **reusable**.
+In **Part 4 (Jokes Viewer)**, I successfully built complex pagination logic. But what good is code if you have to rewrite it every time? In this project, I proved that good architecture is **reusable**.
 
 ### 1. Reusable Component Architecture
 - **Problem:** Writing complex pagination logic inside `App.jsx` bloats the main file and makes the code hard to maintain.
